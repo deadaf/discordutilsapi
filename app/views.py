@@ -3,5 +3,5 @@ from flask import jsonify
 
 @app.route("/")
 def index():
-    return ({"support_server": "https://discord.gg/aBM5xz6"})
+    return ({"support_guild": "https://discord.gg/aBM5xz6"})
 
