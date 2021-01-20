@@ -1,10 +1,14 @@
 from app import app
+import config
 import secrets
 from flask import jsonify,request
 
 @app.route("/")
 def index():
-    return ({"support_guild": "https://discord.gg/aBM5xz6"})
+    return jsonify({"support_guild": "https://discord.gg/aBM5xz6",
+    "endpoints":[
+        "GET /password?length=int"
+    ]})
 
 @app.route("/password")
 def password():
