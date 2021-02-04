@@ -15,12 +15,13 @@ def password():
     nbytes = request.args.get('length')
     if not nbytes:
         return jsonify({"error":"Password length was not specified"})
-
-    if not isinstance(nbytes, int):
-        return jsonify({"error":"length is always an integer dummy!"})
-
-    password = secrets.token_urlsafe(int(nbytes))
-    return jsonify({"password":password})
+        
+    try:
+        nb = int(nbytes)
+        password = secrets.token_urlsafe(int(nbytes))
+        return jsonify({"password":password})
+    except ValueError:
+    	return jsonify({"error":"length is always an integer dummy!"})
 
 
 @app.errorhandler(404)
